@@ -1,0 +1,13 @@
+version: 1.5.2
+apkFileName: signal.apk
+isFrameworkApk: false
+usesFramework:
+  ids:
+  - 1
+sdkInfo:
+  minSdkVersion: '14'
+  targetSdkVersion: '15'
+packageInfo:
+  cur_package: com.tuenti.lostchallenge
+  orig_package: com.tuenti.lostchallenge
+compressionType: false

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:id="@id/linearLayout1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerHorizontal="true" android:layout_centerVertical="true">
+        <TextView android:textAppearance="?android:textAppearanceLarge" android:gravity="right" android:layout_gravity="right" android:id="@id/textView1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/label" android:layout_weight="2.0" />
+        <EditText android:id="@id/et_channel" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginRight="10.0dip" android:layout_weight="1.0">
+            <requestFocus />
+        </EditText>
+    </LinearLayout>
+    <Button android:id="@id/bt_start" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginRight="15.0dip" android:layout_marginBottom="10.0dip" android:text="@string/button_connect" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+</RelativeLayout>

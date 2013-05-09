@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">LostChallenge</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_screen_main">LostChallenge</string>
+    <string name="label">channel</string>
+    <string name="button_connect">Start</string>
+    <string name="button_disconnect">Stop</string>
+</resources>

@@ -1,0 +1,159 @@
+digraph G {
+        graph [ dpi = 150 ];
+
+        state0;
+        state1;
+        state2;
+        state3;
+        state4;
+        state5;
+        state6;
+        state7;
+        state8;
+        state9;
+        state10;
+        state11;
+        state12;
+        state13;
+        state14;
+        state15;
+        state16;
+        state17;
+        state18;
+        state19;
+        state20;
+        state21;
+        state22;
+        state23;
+        state24;
+        state25;
+        state26;
+        state27;
+        state28;
+        state29;
+        state30;
+        state31;
+        state32;
+        start;
+        end;
+        
+        start  -> state0 [ label = "#:%, R" ]
+        state0 -> state0 [ label = "0:0, R" ]
+        state0 -> state0 [ label = "1:1, R" ]
+        state0 -> state1 [ label = "#:#, S" ]
+        state1 -> state1 [ label = "#:#, L" ]
+        state1 -> state1 [ label = "$:$, L" ]
+        state1 -> state2 [ label = "1:0, R" ]
+        state1 -> state1 [ label = "0:1, L" ]
+        state2 -> state2 [ label = "1:1, R" ]
+        state2 -> state2 [ label = "0:0, R" ]
+        state2 -> state3 [ label = "#:#, L" ]
+        state2 -> state3 [ label = "$:$, L" ]
+        state3 -> state3 [ label = "0:0, L" ]
+        state3 -> state4 [ label = "1:1, R" ]
+        state3 -> state5 [ label = "%:%, R" ]
+        state4 -> state4 [ label = "0:0, R" ]
+        state4 -> state4 [ label = "1:1, R" ]
+        state5 -> state5 [ label = "1:1, R" ]
+        state5 -> state5 [ label = "0:0, R" ]
+        state5 -> state6 [ label = "#:#, S" ]
+        state5 -> state6 [ label = "$:$, S" ]
+        state4 -> state7 [ label = "#:#, S" ]
+        state4 -> state7 [ label = "$:$, S" ]
+        state7 -> state8 [ label = "#:$, R" ]
+        state7 -> state9 [ label = "$:$, R" ]
+        state8 -> state8 [ label = "1:1, R" ]
+        state8 -> state8 [ label = "0:0, R" ]
+        state8 -> state8 [ label = "#:#, R" ]
+        state8 -> state10 [ label = "_:_, L" ]
+        state10 -> state11 [ label = "#:$, L" ]
+        state11 -> state11 [ label = "1:1, L" ]
+        state11 -> state11 [ label = "0:0, L" ]
+        state11 -> state11 [ label = "#:#, L" ]
+        state11 -> state9 [ label = "$:$, R" ]
+        state9 -> state12 [ label = "1:_, R" ]
+        state9 -> state13 [ label = "0:_, R" ]
+        state9 -> state14 [ label = "#:_, R" ]
+        state9 -> state15 [ label = "$:$, S" ]
+        state12 -> state12 [ label = "1:1, R" ]
+        state12 -> state12 [ label = "0:0, R" ]
+        state12 -> state12 [ label = "#:#, R" ]
+        state12 -> state12 [ label = "$:$, R" ]
+        state12 -> state16 [ label = "_:1, L" ]
+        state16 -> state16 [ label = "1:1, L" ]
+        state16 -> state16 [ label = "0:0, L" ]
+        state16 -> state16 [ label = "#:#, L" ]
+        state16 -> state16 [ label = "$:$, L" ]
+        state16 -> state9 [ label = "_:1, R" ]
+        state13 -> state13 [ label = "1:1, R" ]
+        state13 -> state13 [ label = "0:0, R" ]
+        state13 -> state13 [ label = "#:#, R" ]
+        state13 -> state13 [ label = "$:$, R" ]
+        state13 -> state17 [ label = "_:0, L" ]
+        state17 -> state17 [ label = "1:1, L" ]
+        state17 -> state17 [ label = "0:0, L" ]
+        state17 -> state17 [ label = "#:#, L" ]
+        state17 -> state17 [ label = "$:$, L" ]
+        state17 -> state9 [ label = "_:0, R" ]
+        state14 -> state14 [ label = "1:1, R" ]
+        state14 -> state14 [ label = "0:0, R" ]
+        state14 -> state14 [ label = "#:#, R" ]
+        state14 -> state14 [ label = "$:$, R" ]
+        state14 -> state18 [ label = "_:#, L" ]
+        state18 -> state18 [ label = "1:1, L" ]
+        state18 -> state18 [ label = "0:0, L" ]
+        state18 -> state18 [ label = "#:#, L" ]
+        state18 -> state18 [ label = "$:$, L" ]
+        state18 -> state9 [ label = "_:#, R" ]
+        state15 -> state15 [ label = "1:1, R" ]
+        state15 -> state15 [ label = "0:0, R" ]
+        state15 -> state15 [ label = "#:#, R" ]
+        state15 -> state15 [ label = "$:$, R" ]
+        state15 -> state19 [ label = "_:#, L" ]
+        state19 -> state19 [ label = "1:1, L" ]
+        state19 -> state19 [ label = "0:0, L" ]
+        state19 -> state19 [ label = "#:#, L" ]
+        state19 -> state20 [ label = "$:$, L" ]
+        state20 -> state20 [ label = "1:1, L" ]
+        state20 -> state20 [ label = "0:0, L" ]
+        state20 -> state20 [ label = "#:#, L" ]
+        state20 -> state1 [ label = "$:$, S" ]
+        state6 -> state6 [ label = "1:1, R" ]
+        state6 -> state6 [ label = "0:0, R" ]
+        state6 -> state6 [ label = "#:#, R" ]
+        state6 -> state6 [ label = "$:#, R" ]
+        state6 -> state21 [ label = "_:_, L" ]
+        state21 -> state22 [ label = "#:#, L" ]
+        state22 -> state22 [ label = "1:1, L" ]
+        state22 -> state22 [ label = "0:0, L" ]
+        state22 -> state23 [ label = "#:#, L" ]
+        state22 -> end [ label = "%:#, S" ]
+        state23 -> state23 [ label = "1:1, R" ]
+        state23 -> state23 [ label = "0:0, R" ]
+        state23 -> state23 [ label = "#:#, R" ]
+        state23 -> state24 [ label = "_:_, L" ]
+        state24 -> state25 [ label = "#:#, L" ]
+        state25 -> state25 [ label = "0:0, L" ]
+        state25 -> state26 [ label = "1:1, R" ]
+        state25 -> state27 [ label = "#:#, R" ]
+        state26 -> state26 [ label = "0:0, R" ]
+        state26 -> state26 [ label = "1:1, R" ]
+        state27 -> state27 [ label = "1:1, R" ]
+        state27 -> state27 [ label = "0:0, R" ]
+        state27 -> state28 [ label = "#:_, L" ]
+        state26 -> state29 [ label = "#:#, L" ]
+        state29 -> state30 [ label = "1:0, L" ]
+        state29 -> state29 [ label = "0:1, L" ]
+        state30 -> state30 [ label = "1:1, L" ]
+        state30 -> state30 [ label = "0:0, L" ]
+        state30 -> state31 [ label = "#:#, L" ]
+        state31 -> state31 [ label = "1:0, L" ]
+        state31 -> state32 [ label = "0:1, R" ]
+        state32 -> state32 [ label = "1:1, R" ]
+        state32 -> state32 [ label = "0:0, R" ]
+        state32 -> state32 [ label = "#:#, R" ]
+        state32 -> state21 [ label = "_:_, L" ]
+        state28 -> state28 [ label = "1:_, L" ]
+        state28 -> state28 [ label = "0:_, L" ]
+        state28 -> state21 [ label = "#:#, S" ]
+}
