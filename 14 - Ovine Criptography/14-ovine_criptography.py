@@ -5,6 +5,8 @@
 #
 # Challenge 14 - Ovine Cryptography
 
+# I will name my sheeps as 'Alice' and 'Bob'
+
 import sys
 import binascii
 import string
@@ -24,31 +26,133 @@ texts = [   '5cb4290b0a901940ac5392061f0714b9109ae565951780dc81171f50fbd919aba08
             '58ed6d000bd4190fa9128f1346005bed1998f92cb9418d9d9e1f525ea9c019abaf9716d0df895407bd43dd6a7403caac40943aa4fe19690ae1b01fc45a8e8c9f05fe500cf83cfb87a20c6e044a802659b663c8d94537ecb2d491bc2c758dccb7195583d7a551ecc3a3fd1f751f1bcca4d337a6022b3e06892e867804d8fca2088c6b21ee036ee9463d678625f2f7d429f906f7f16546d6',
         ]
 
+
+printable = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 -!?*/&%$.,()+'@#"
+
+cracked_key = "15944d6464b76d60db32fc723f737b9971f98d0cf061e5fce87a723f89ad78c7c9f864bdbaed7477c821b103172eaed934ed1ac39278076ec1d171a07aefacf1648a257e9950dbe3c76a076723e5483acf43a1b7655a83c0b5fd9c4a1cefbed23934edb3852584a2d7dd56557e76ecd0bb52d4674d5174ec0ee30067ad8fc76cac0d53816e4e9a274b0ee842d282ba408f6385820035f81c31aae0be33e9cc7f5b3c339e0bc5ebda701371680c569bb670637fbc7901a247c25ccc256b620fde5dd2e3d710a3d1f052fbe055bfa9866a2d9ff5b5669dc4e7899c47192ee581cdd79ad8a936cd"
+
+def decode_text(text, key):
+    ciphertext = binascii.unhexlify(text)
+    bin_key = binascii.unhexlify(key)
+    
+    s = ''
+    
+    for c, k in zip(ciphertext, bin_key):
+        s += chr(ord(c) ^ ord(k))
+        
+    return s
+
+
+if __name__ == '__main__':
+    for line in sys.stdin:
+        line = line.rstrip('\r\n ')
+        print decode_text(line, cracked_key)
+
+'''
+
+# DIRTY HACKY CODE HEAD. DON'T STARE DIRECTLY, IT WILL BURN YOUR EYES
+
 def xor_strings(s1, s2):
+    global printable
     s = ''
     for a, b in zip(s1, s2):
-        c = chr(ord(a) ^ ord(b))
-        if c in "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 -!?*/&%$.,()+'@#":
-            s += c
-        else:
-            s += '.'
+        c = chr((ord(a) ^ ord(b)) & 0xFF)
+        s += c
+            
             
     return s
         
+
+def fill_key(key, ciphertext, pos, text):
+    ciphertext = binascii.unhexlify(ciphertext)
+    l = min(len(ciphertext), len(text))
+        
+    for i in range(l):
+        #print "ciphertext 0x%02x   text  0x%02x  %s" % (ord(ciphertext[i+pos]), ord(text[i]), text[i])
+        key[pos + i] = ord(ciphertext[i+pos]) ^ ord(text[i])
+        
+def get_decoded(key, partial_key, ciphertext):
+    global printable
+    s = ''
+    for i in range(len(ciphertext)):
+        if not i in partial_key:
+            c= '.'
+        else:
+            c = chr(ord(ciphertext[i]) ^ ord(key[i]))
+            if c not in printable:
+                c = '.'
+                
+        s += c
+        
+    return s
+    
+def complete_key(partial_key, length):
+    key = []
+    for i in range(length):
+        if i in partial_key:
+            key.append(chr(partial_key[i]))
+        else:
+            key.append(chr(0))
+            
+    return "".join(key)
         
 if __name__ == '__main__':
-    #print repr(binascii.unhexlify(texts[0]))
-    #sys.exit(0)
+
+    partial_key = {}
+    fill_key(partial_key, texts[3], 129, "dog did nothing in the night-time");
+    #fill_key(partial_key, texts[3], 129, "and there is em")
+    #print key
+    fill_key(partial_key, texts[0], 129, "the hearts of my countrymen");
+    fill_key(partial_key, texts[0], 90, " not dying. I don't want to live on in the hearts of my countrymen. ")
+    fill_key(partial_key, texts[5], 128, "whether");
+    fill_key(partial_key, texts[11], 124, "complete fools");
+    fill_key(partial_key, texts[11], 92, " underestimate the ingenuity of complete fools");
+    fill_key(partial_key, texts[6], 122, " sign on it saying 'End-of-the-World Switch. PLEASE DO NOT TOUCH', the paint wouldn't even have time to dry.")
+    fill_key(partial_key, texts[2], 120, " asked")
+    fill_key(partial_key, texts[1], 116, " people who can never remember where they")
+    fill_key(partial_key, texts[0], 109, " want to live on in the heart")
+    fill_key(partial_key, texts[0], 121, "e on in the hearts of my cou")
+    fill_key(partial_key, texts[7], 142, "empirical evidence")
+    fill_key(partial_key, texts[1], 99, " particularly for people who can never remember")
+    fill_key(partial_key, texts[6], 0,"Some humans would do anything to see if it was possible to do it. If you put a large switch in some cave")
+    #fill_key(partial_key, texts[0], 147, "beneath ")
+    #sys.exit()
+    
+    
+    key = complete_key(partial_key, max([len(x)/2 for x in texts]))
+    print binascii.hexlify(key)
+    
+    #test_word = "an never remember"
+    test_word = "Some humans would do anything to see if it was possible to do it. If you put a large switch in some cave"
+    #test_word = ")Bee is"
+
     for i in range(len(texts)):
         for j in range(i + 1, len(texts)):
                 bin1 = binascii.unhexlify(texts[i])
                 bin2 = binascii.unhexlify(texts[j])
                 
                 print "------------------------------------------------------"
-                print "i = %d   j = %d" % (i, j)
-                print xor_strings(bin1, bin2)
+                print "i%d j%d" % (i, j)
+                print "test_word = {%s}" % (test_word)
+                print
+                print get_decoded(key, partial_key, bin1)
+                print "--"
+                print get_decoded(key, partial_key, bin2)
+                print
+                x = xor_strings(bin1, bin2)
+                for pos in range(len(x) - len(test_word)):
+                    l = []
+                    for pos_test in range(len(test_word)):
+                        #print pos + pos_test
+                        l.append(chr(ord(x[pos + pos_test]) ^ ord(test_word[pos_test])))
+                        
+                    if all([ c in printable for c in l ]):
+                        #print l
+                        print "         pos = %d, test = {%s}" % (pos, "".join(l))
+                        
                 print
                 print
+'''
                 
             
 
